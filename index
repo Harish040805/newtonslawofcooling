@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newton's Cooling Law Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d1e189;
+        }
+        form {
+            width: 50%;
+            margin: 40px auto;
+            padding: 20px;
+            border: 1px solid #d1e189;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #FFFFFF;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+              color: #666;
+        }
+        input[type="number"] {
+            width: 100%;
+            height: 25px;
+            margin-bottom: 20px;
+            padding: 5px;
+           border: 1px solid #d1e189;
+            border-radius: 5px;
+        }
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 40px auto;
+}
+#calculator-form {
+    width: 40%;
+    padding: 20px;
+    border: 1px solid #d1e189;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    margin-right: 20px;
+    margin-top: 0; 
+}
+.instruction-box {
+    width: 56%;
+    padding: 20px;
+    border: 1px solid #d1e189;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    margin-top: 0; 
+}
+button {
+    width: 100%;
+    height: 35px;
+    background-color: #b7c476;
+    color: #fff;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #a3b35d;
+}
+#result {
+    width: 60%;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #d1e189;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+.instruction-box h2 {
+    color: #d1e189;
+}
+.instruction-box p, .instruction-box li {
+    color: #666;
+}
+@media (max-width: 1024px) {
+    #calculator-form {
+        width: 45%;
+    }
+    .instruction-box {
+        width: 50%;
+    }
+}
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    #calculator-form {
+        width: 80%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    .instruction-box {
+        width: 80%;
+    }
+}
+@media (max-width: 480px) {
+    #calculator-form {
+        width: 90%;
+    }
+    .instruction-box {
+        width: 90%;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    h2 {
+        font-size: 18px;
+    }
+}
+    </style>
+</head>
+<body>
+<br><br>
+    <h1 style="text-align: center; color: #fff;">Newton's Cooling Law Calculator</h1>
+	<br>
+<div class="container">
+    <form id="calculator-form">
+		<h2>READING 1</h2>
+		<label for="temperature1">Temperature 1 (°C):</label>
+		<input type="number" id="temperature1">
+		<label for="time1">Time 1 (minutes):</label>
+		<input type="number" id="time1" value="0" readonly>
+		<h2>READING 2</h2>
+		<label for="temperature2">Temperature 2 (°C):</label>
+		<input type="number" id="temperature2">
+		<label for="time2">Time 2 (minutes):</label>
+		<input type="number" id="time2">
+		<h2>REQUIREMENTS</h2>
+		<label for="cooling-rate">Cooling Rate (k):</label>
+		<input type="number" id="cooling-rate">
+		<label for="surrounding-temperature">Surrounding Temperature (°C):</label>
+		<input type="number" id="surrounding-temperature" value="25">
+		<label for="original-temperature">Original Body Temperature (°C):</label>
+		<input type="number" id="original-temperature">
+		<button id="calculate-button">Calculate</button>
+	</form>
+<div class="instruction-box">
+    <h2 style="color: #000;">About</h2>
+    <p>Newton's Cooling Law (or) Newton's Law of Cooling is a relation between Time and Temperature</p>
+	<p> It is used to determine the following things: <br><br>
+	i) When does a body started to cool or heat <br>
+	ii) When will the body cool or heat to a particular temperature <br>
+	iii) In a particular scenario, whether the body will heat or cool  <br>
+	iv) What is the time at a particular temperature  <br>
+	v) Other relevant questions related to temperature and time</p>
+	    <h2 style="color: #000;">Important Instructions for Newton's Cooling Law Calculator</h2>
+		<p>To ensure accurate results, please follow these instructions:</p>
+    <ol>
+        <li><b>Input Values:</b> You can input any combination of values, and the calculator will solve for the missing values.</li>
+        <li><b>Temperature Relationship:</b> If Temperature 1 and Temperature 2 are both provided, they should both be either above or below the surrounding temperature.</li>
+        <li><b>Cooling or Heating:</b>
+            <ul>
+                <li>If Temperature 1 is greater than Temperature 2, then it means the body is cooling.</li>
+                <li>If Temperature 1 is less than Temperature 2, then it means the body is heating up.</li>
+            </ul>
+        </li>
+        <li><b>Time:</b>
+            <ul>
+                <li>Time 1 is the initial time, which is always 0 minutes.</li>
+                <li>Time 2 is the time at which Temperature 2 is measured.</li>
+            </ul>
+        </li>
+        <li><b>Surrounding Temperature:</b> The surrounding temperature is constant.</li>
+        <li><b>Original Body Temperature:</b> The original body temperature should be on the same side of the surrounding temperature as Temperature 1 and Temperature 2.</li>
+    <p><b>Example:</b> If Surrounding Temperature is 25°C, and Temperature 1 and Temperature 2 are both above 25°C, the Original Body Temperature should also be above 25°C.</p>
+	<br>
+		<li><b>Cooling Rate (k):</b> If you don't know the cooling rate, leave it blank and the calculator will calculate it for you.</li>
+        <li><b>Calculate Button:</b> Click the "Calculate" button to solve for the missing values.</li>
+        <li><b>Result:</b> The calculator will display the calculated values, including the cooling rate, time, or temperature, depending on the input values.</li>
+	</ol>	
+	<div id="result"></div>
+</div>
+</div>
+    <script>
+const form = document.getElementById('calculator-form');
+const resultDiv = document.getElementById('result');
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const temperature1 = parseFloat(document.getElementById('temperature1').value);
+    const time1 = 0; 
+    const temperature2 = parseFloat(document.getElementById('temperature2').value);
+    const time2 = parseFloat(document.getElementById('time2').value);
+    const coolingRateInput = document.getElementById('cooling-rate').value;
+    const coolingRate = parseFloat(coolingRateInput);
+    const surroundingTemperature = parseFloat(document.getElementById('surrounding-temperature').value);
+    const originalTemperatureInput = document.getElementById('original-temperature').value;
+    const originalTemperature = parseFloat(originalTemperatureInput);
+    let resultHtml = '';
+    if (!isNaN(temperature1) && !isNaN(temperature2) && !isNaN(time2) && !isNaN(surroundingTemperature) && isNaN(coolingRate)) {
+        const k = calculateK(temperature1, temperature2, time2 - time1, surroundingTemperature);
+        resultHtml += `<p>Cooling Rate (k): ${k}</p>`;
+    }
+    if (!isNaN(temperature1) && !isNaN(time2) && !isNaN(coolingRate) && !isNaN(surroundingTemperature)) {
+        const temperature2Calculated = calculateTemperature(temperature1, coolingRate, time2 - time1, surroundingTemperature);
+        if (Math.abs(temperature2Calculated - temperature2) > 0.01) {
+            resultHtml += `<p>Temperature at time ${time2} minutes: ${temperature2Calculated}°C (Note: Calculated value does not match provided Temperature 2)</p>`;
+        } else {
+            resultHtml += `<p>Temperature at time ${time2} minutes: ${temperature2Calculated}°C</p>`;
+        }
+    }
+    if (!isNaN(temperature1) && (temperature2) && !isNaN(coolingRate) && !isNaN(surroundingTemperature)) {
+        const timeCalculated = calculateTime(temperature1, temperature2, coolingRate, surroundingTemperature);
+        resultHtml += `<p>Time: ${timeCalculated} minutes</p>`;
+    }
+    if (!isNaN(temperature1) && !isNaN(coolingRate) && !isNaN(time1) && !isNaN(surroundingTemperature) && isNaN(originalTemperature)) {
+        const originalBodyTemperature = calculateOriginalBodyTemperature(temperature1, coolingRate, time1, surroundingTemperature);
+        resultHtml += `<p>Original Body Temperature: ${originalBodyTemperature}°C</p>`;
+    }
+    if (!isNaN(coolingRate) && !isNaN(time2) && !isNaN(temperature2) && !isNaN(surroundingTemperature) && isNaN(temperature1)) {
+        const initialTemperature = calculateInitialTemperature(temperature2, coolingRate, time2, surroundingTemperature);
+        resultHtml += `<p>Temperature 1: ${initialTemperature}°C</p>`;
+    }
+    resultDiv.innerHTML = resultHtml;
+});
+function calculateK(temperature1, temperature2, time, surroundingTemperature) {
+    return Math.log(Math.abs((temperature1 - surroundingTemperature) / (temperature2 - surroundingTemperature))) / time;
+}
+function calculateTemperature(initialTemperature, k, time, surroundingTemperature) {
+    return surroundingTemperature + (initialTemperature - surroundingTemperature) * Math.exp(-k * time);
+}
+function calculateTime(initialTemperature, finalTemperature, k, surroundingTemperature) {
+    return Math.log(Math.abs((initialTemperature - surroundingTemperature) / (finalTemperature - surroundingTemperature))) / k;
+}
+function calculateOriginalBodyTemperature(temperature, k, time, surroundingTemperature) {
+    return surroundingTemperature + (temperature - surroundingTemperature) / Math.exp(-k * time);
+}
+function calculateInitialTemperature(finalTemperature, k, time, surroundingTemperature) {
+    return (finalTemperature - surroundingTemperature) / Math.exp(-k * time) + surroundingTemperature;
+}
+	</script>
+</body>
+</html>
