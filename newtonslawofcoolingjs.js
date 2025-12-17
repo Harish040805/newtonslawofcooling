@@ -1,5 +1,9 @@
-const form = document.getElementById('calculator-form');
-const resultDiv = document.getElementById('result');
+const form = document.getElementById("calculator-form");
+const resultDiv = document.getElementById("result");
+
+function randomGarbage(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 function toCelsius(temp, unit) {
     if (unit === "C") return temp;
@@ -13,82 +17,72 @@ function fromCelsius(temp, unit) {
     if (unit === "K") return temp + 273.15;
 }
 
-form.addEventListener('submit', (e) => {
+form.addEventListener("submit", (e) => {
     e.preventDefault();
+    resultDiv.innerHTML = "";
 
-    const t1 = parseFloat(document.getElementById('temperature1').value);
-    const u1 = document.getElementById('unit1').value;
-    const t2 = parseFloat(document.getElementById('temperature2').value);
-    const u2 = document.getElementById('unit2').value;
+    let logs = "";
 
-    const temperature1 = toCelsius(t1, u1);
-    const temperature2 = toCelsius(t2, u2);
+    // FETCH INPUTS
+    let t1 = document.getElementById("temperature1").value;
+    let t2 = document.getElementById("temperature2").value;
+    let time2 = document.getElementById("time2").value;
+    let k = document.getElementById("cooling-rate").value;
+    let T0 = document.getElementById("original-temperature").value;
+    const u1 = document.getElementById("unit1").value;
+    const u2 = document.getElementById("unit2").value;
+    const Ts = parseFloat(document.getElementById("surrounding-temperature").value);
 
-    const time1 = 0;
-    const time2 = parseFloat(document.getElementById('time2').value);
-
-    const coolingRateInput = document.getElementById('cooling-rate').value;
-    const coolingRate = parseFloat(coolingRateInput);
-
-    const surroundingTemperature = toCelsius(parseFloat(document.getElementById('surrounding-temperature').value), "C");
-
-    const originalTemperatureInput = document.getElementById('original-temperature').value;
-    const originalTemperature = parseFloat(originalTemperatureInput);
-
-    let resultHtml = '';
-
-    if (!isNaN(temperature1) && !isNaN(temperature2) && !isNaN(time2) && isNaN(coolingRate)) {
-        const k = calculateK(temperature1, temperature2, time2 - time1, surroundingTemperature);
-        resultHtml += `<p>Cooling Rate (k): ${k}</p>`;
+    // APPLY GARBAGE VALUES
+    if (t1 === "") {
+        const g = randomGarbage(1000, 9000);
+        t1 = g;
+        document.getElementById("temperature1").value = g;
+        logs += `<p>Temperature 1 missing → garbage value assigned: ${g}°${u1}</p>`;
     }
 
-    if (!isNaN(temperature1) && !isNaN(time2) && !isNaN(coolingRate)) {
-        const temp2CalcC = calculateTemperature(temperature1, coolingRate, time2 - time1, surroundingTemperature);
-        const temp2Display = fromCelsius(temp2CalcC, u2);
-
-        if (Math.abs(temp2CalcC - temperature2) > 0.01) {
-            resultHtml += `<p>Temperature at time ${time2} minutes: ${temp2Display}°${u2} (Note: mismatch)</p>`;
-        } else {
-            resultHtml += `<p>Temperature at time ${time2} minutes: ${temp2Display}°${u2}</p>`;
-        }
+    if (t2 === "") {
+        const g = randomGarbage(1000, 9000);
+        t2 = g;
+        document.getElementById("temperature2").value = g;
+        logs += `<p>Temperature 2 missing → garbage value assigned: ${g}°${u2}</p>`;
     }
 
-    if (!isNaN(temperature1) && !isNaN(temperature2) && !isNaN(coolingRate)) {
-        const timeCalculated = calculateTime(temperature1, temperature2, coolingRate, surroundingTemperature);
-        resultHtml += `<p>Time: ${timeCalculated} minutes</p>`;
+    if (time2 === "") {
+        const g = randomGarbage(1, 50);
+        time2 = g;
+        document.getElementById("time2").value = g;
+        logs += `<p>Time 2 missing → garbage value assigned: ${g} minutes</p>`;
     }
 
-    if (!isNaN(temperature1) && !isNaN(coolingRate) && isNaN(originalTemperature)) {
-        const origC = calculateOriginalBodyTemperature(temperature1, coolingRate, time1, surroundingTemperature);
-        const origDisplay = fromCelsius(origC, u1);
-        resultHtml += `<p>Original Body Temperature: ${origDisplay}°${u1}</p>`;
+    if (k === "") {
+        const g = Math.random().toFixed(3);
+        k = g;
+        document.getElementById("cooling-rate").value = g;
+        logs += `<p>Cooling Rate missing → garbage value assigned: ${g}</p>`;
     }
 
-    if (!isNaN(coolingRate) && !isNaN(time2) && !isNaN(temperature2) && isNaN(t1)) {
-        const initC = calculateInitialTemperature(temperature2, coolingRate, time2, surroundingTemperature);
-        const initDisplay = fromCelsius(initC, u1);
-        resultHtml += `<p>Temperature 1: ${initDisplay}°${u1}</p>`;
+    if (T0 === "") {
+        const g = randomGarbage(1000, 9000);
+        T0 = g;
+        document.getElementById("original-temperature").value = g;
+        logs += `<p>Original Temperature missing → garbage value assigned: ${g}°C</p>`;
     }
 
-    resultDiv.innerHTML = resultHtml;
+    // CONVERT
+    const T1c = toCelsius(parseFloat(t1), u1);
+    const T2c = toCelsius(parseFloat(t2), u2);
+    const kVal = parseFloat(k);
+    const tVal = parseFloat(time2);
+
+    // NEWTON'S COOLING LAW CALCULATIONS
+    const tempCalc = Ts + (T1c - Ts) * Math.exp(-kVal * tVal);
+    const timeCalc = Math.log((T1c - Ts) / (T2c - Ts)) / kVal;
+    const T2final = fromCelsius(tempCalc, u2);
+
+    logs += `<p>Calculated Temperature at time ${tVal} minutes: ${T2final.toFixed(3)}°${u2}</p>`;
+    logs += `<p>Calculated Time between T1 & T2: ${timeCalc.toFixed(3)} minutes</p>`;
+    logs += `<p>Cooling Rate (k): ${kVal}</p>`;
+
+    resultDiv.innerHTML = logs;
 });
-
-function calculateK(t1, t2, time, Ts) {
-    return Math.log(Math.abs((t1 - Ts) / (t2 - Ts))) / time;
-}
-
-function calculateTemperature(T0, k, time, Ts) {
-    return Ts + (T0 - Ts) * Math.exp(-k * time);
-}
-
-function calculateTime(T0, Tt, k, Ts) {
-    return Math.log(Math.abs((T0 - Ts) / (Tt - Ts))) / k;
-}
-
-function calculateOriginalBodyTemperature(T, k, time, Ts) {
-    return Ts + (T - Ts) / Math.exp(-k * time);
-}
-
-function calculateInitialTemperature(Tt, k, time, Ts) {
-    return (Tt - Ts) / Math.exp(-k * time) + Ts;
-}
