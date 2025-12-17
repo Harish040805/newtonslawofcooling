@@ -10,70 +10,78 @@
     <center><h1>Newton's Cooling Law Calculator</h1></center>
     <div class="container">
         <form id="calculator-form">
-<h2>READING 1</h2>
-<div class="input-row">
-  <label for="temperature1">Temperature 1:</label>
-  <input type="number" id="temperature1" placeholder="Enter temperature">
-  <select id="unit1">
-    <option value="C" selected>°C</option>
-    <option value="F">°F</option>
-    <option value="K">K</option>
-  </select>
-</div>
-<label for="time1">Time 1 (minutes):</label>
-<input type="number" id="time1" value="0" readonly>
 
-<h2>READING 2</h2>
-<div class="input-row">
-  <label for="temperature2">Temperature 2:</label>
-  <input type="number" id="temperature2" placeholder="Enter temperature">
-  <select id="unit2">
-    <option value="C" selected>°C</option>
-    <option value="F">°F</option>
-    <option value="K">K</option>
-  </select>
-</div>
-<label for="time2">Time 2 (minutes):</label>
-<input type="number" id="time2">
+            <h2>READING 1</h2>
+            <div class="input-row">
+                <label for="temperature1">Temperature 1:</label>
+                <input type="number" id="temperature1" placeholder="Enter temperature">
+                <select id="unit1">
+                    <option value="C" selected>°C</option>
+                    <option value="F">°F</option>
+                    <option value="K">K</option>
+                </select>
+            </div>
 
-<h2>READING 3</h2>
-<div class="input-row">
-  <label for="temperature2">Temperature 3:</label>
-  <input type="number" id="temperature2" placeholder="Enter temperature">
-  <select id="unit2">
-    <option value="C" selected>°C</option>
-    <option value="F">°F</option>
-    <option value="K">K</option>
-  </select>
-</div>
-<label for="time2">Time 3 (minutes):</label>
-<input type="number" id="time2">
+            <label for="time1">Time 1 (minutes):</label>
+            <input type="number" id="time1" value="0" readonly>
+
+
+            <h2>READING 2</h2>
+            <div class="input-row">
+                <label for="temperature2">Temperature 2:</label>
+                <input type="number" id="temperature2" placeholder="Enter temperature">
+                <select id="unit2">
+                    <option value="C" selected>°C</option>
+                    <option value="F">°F</option>
+                    <option value="K">K</option>
+                </select>
+            </div>
+
+            <label for="time2">Time 2 (minutes):</label>
+            <input type="number" id="time2">
+
+
+            <h2>READING 3</h2>
+            <div class="input-row">
+                <label for="temperature3">Temperature 3:</label>
+                <input type="number" id="temperature3" placeholder="Enter temperature">
+                <select id="unit3">
+                    <option value="C" selected>°C</option>
+                    <option value="F">°F</option>
+                    <option value="K">K</option>
+                </select>
+            </div>
+
+            <label for="time3">Time 3 (minutes):</label>
+            <input type="number" id="time3">
+
 
             <h2>REQUIREMENTS</h2>
+
             <label for="cooling-rate">Cooling Rate (k):</label>
             <input type="number" id="cooling-rate">
-<div class="input-row">
-    <label>Surrounding Temperature (°C):</label>
-    <input type="number" id="surroundingTemp" />
 
-    <select id="surroundingUnit">
-        <option value="C" selected>°C</option>
-        <option value="F">°F</option>
-        <option value="K">K</option>
-    </select>
-</div>
+            <div class="input-row">
+                <label>Surrounding Temperature (°C):</label>
+                <input type="number" id="surroundingTemp">
 
-<div class="input-row">
-    <label>Original Body Temperature (°C):</label>
-    <input type="number" id="bodyTemp" />
+                <select id="surroundingUnit">
+                    <option value="C" selected>°C</option>
+                    <option value="F">°F</option>
+                    <option value="K">K</option>
+                </select>
+            </div>
 
-    <select id="bodyUnit">
-        <option value="C" selected>°C</option>
-        <option value="F">°F</option>
-        <option value="K">K</option>
-    </select>
-</div>
+            <div class="input-row">
+                <label>Original Body Temperature (°C):</label>
+                <input type="number" id="bodyTemp">
 
+                <select id="bodyUnit">
+                    <option value="C" selected>°C</option>
+                    <option value="F">°F</option>
+                    <option value="K">K</option>
+                </select>
+            </div>
 
             <button id="calculate-button">Calculate</button>
         </form>
