@@ -3,15 +3,14 @@ body {
     background-color: #d1e189;
 }
 
-/* Form Container */
 form {
     width: 50%;
     margin: 40px auto;
     padding: 20px;
     border: 1px solid #d1e189;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #FFFFFF;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 label {
@@ -20,24 +19,23 @@ label {
     color: #666;
 }
 
-/* Temperature Row (input + unit selector on same line) */
-.temp-row {
+/* FIXED ROW LAYOUT */
+.input-row {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-bottom: 20px;
 }
 
-.temp-row input[type="number"] {
+.input-row input[type="number"] {
     flex: 1;
 }
 
-.temp-row select {
+.input-row select {
     width: 70px;
     height: 30px;
     border: 1px solid #d1e189;
     border-radius: 5px;
-    background: white;
 }
 
 /* Normal Inputs */
@@ -62,10 +60,9 @@ input[type="number"] {
     padding: 20px;
     border: 1px solid #d1e189;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
     margin-right: 20px;
-    margin-top: 0;
 }
 
 .instruction-box {
@@ -73,83 +70,28 @@ input[type="number"] {
     padding: 20px;
     border: 1px solid #d1e189;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
-    margin-top: 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-/* Button */
 button {
     width: 100%;
     height: 35px;
     background-color: #b7c476;
     color: #fff;
-    padding: 5px;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
 }
 
 button:hover {
     background-color: #a3b35d;
 }
 
-/* Result Box */
 #result {
-    width: 60%;
-    margin: 40px auto;
+    width: 90%;
     padding: 20px;
     border: 1px solid #d1e189;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
-}
-
-.instruction-box h2 {
-    color: #d1e189;
-}
-
-.instruction-box p,
-.instruction-box li {
-    color: #666;
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-    #calculator-form {
-        width: 45%;
-    }
-    .instruction-box {
-        width: 50%;
-    }
-}
-
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        align-items: center;
-    }
-    #calculator-form {
-        width: 80%;
-        margin-right: 0;
-        margin-bottom: 20px;
-    }
-    .instruction-box {
-        width: 80%;
-    }
-}
-
-@media (max-width: 480px) {
-    #calculator-form {
-        width: 90%;
-    }
-    .instruction-box {
-        width: 90%;
-    }
-    h1 {
-        font-size: 24px;
-    }
-    h2 {
-        font-size: 18px;
-    }
+    background-color: #fff;
+    margin-top: 20px;
 }
