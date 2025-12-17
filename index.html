@@ -39,10 +39,28 @@
             <h2>REQUIREMENTS</h2>
             <label for="cooling-rate">Cooling Rate (k):</label>
             <input type="number" id="cooling-rate">
-            <label for="surrounding-temperature">Surrounding Temperature (°C):</label>
-            <input type="number" id="surrounding-temperature" value="25">
-            <label for="original-temperature">Original Body Temperature (°C):</label>
-            <input type="number" id="original-temperature">
+<div class="input-row">
+    <label>Surrounding Temperature (°C):</label>
+    <input type="number" id="surroundingTemp" />
+
+    <select id="surroundingUnit">
+        <option value="C" selected>°C</option>
+        <option value="F">°F</option>
+        <option value="K">K</option>
+    </select>
+</div>
+
+<div class="input-row">
+    <label>Original Body Temperature (°C):</label>
+    <input type="number" id="bodyTemp" />
+
+    <select id="bodyUnit">
+        <option value="C" selected>°C</option>
+        <option value="F">°F</option>
+        <option value="K">K</option>
+    </select>
+</div>
+
 
             <button id="calculate-button">Calculate</button>
         </form>
