@@ -1,97 +1,182 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     background-color: #d1e189;
+    color: #2c3e50;
+    margin: 0;
+    padding: 15px;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow: hidden;
+    height: 100vh;
+    box-sizing: border-box;
 }
 
-form {
-    width: 50%;
-    margin: 40px auto;
-    padding: 20px;
-    border: 1px solid #d1e189;
-    border-radius: 10px;
-    background-color: #FFFFFF;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+h1 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #1a252f;
+    margin: 0 0 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #2c3e50, #697827);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-label {
-    display: block;
-    margin-bottom: 8px;
-    color: #666;
-}
-
-/* FIXED ROW LAYOUT */
-.input-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.input-row input[type="number"] {
-    flex: 1;
-}
-
-.input-row select {
-    width: 70px;
-    height: 30px;
-    border: 1px solid #d1e189;
-    border-radius: 5px;
-}
-
-/* Normal Inputs */
-input[type="number"] {
-    width: 100%;
-    height: 25px;
-    margin-bottom: 20px;
-    padding: 5px;
-    border: 1px solid #d1e189;
-    border-radius: 5px;
+h2 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #4e5a19;
+    border-bottom: 2px solid #eef7cc;
+    padding-bottom: 5px;
+    margin: 20px 0 12px 0;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
 }
 
 .container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    margin: 40px auto;
+    max-width: 1500px;
+    margin: 0 auto;
+    gap: 15px;
+    height: calc(100vh - 30px);
 }
 
 #calculator-form {
-    width: 40%;
-    padding: 20px;
-    border: 1px solid #d1e189;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    margin-right: 20px;
+    width: 60%;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 16px;
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 10px 30px rgba(44, 62, 80, 0.12);
+    max-height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    backdrop-filter: blur(5px);
 }
 
 .instruction-box {
     width: 56%;
-    padding: 20px;
-    border: 1px solid #d1e189;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 16px;
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 10px 30px rgba(44, 62, 80, 0.12);
+    max-height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    backdrop-filter: blur(5px);
+}
+
+label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 500;
+    color: #4a5568;
+}
+
+.input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.input-row label {
+    margin-bottom: 0;
+    min-width: 130px;
+}
+
+.input-row input[type="number"] {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+input[type="number"], select {
+    height: 38px;
+    padding: 6px 12px;
+    border: 1px solid #cbd5a2;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #2c3e50;
+    background-color:  rgba(255, 255, 255, 0.6);
+    box-sizing: border-box;
+    transition: all 0.25s ease-in-out;
+}
+
+input[type="number"] {
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+input[type="number"]:focus, select:focus {
+    outline: none;
+    border-color: #8fa13b;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(209, 225, 137, 0.4);
+}
+
+input[readonly] {
+    background-color: #f1f5f9;
+    border-color: #cbd5e1;
+    color: #64748b;
+    cursor: not-allowed;
+}
+
+select {
+    width: 75px;
 }
 
 button {
     width: 100%;
-    height: 35px;
-    background-color: #b7c476;
-    color: #fff;
+    height: 44px;
+    background: linear-gradient(135deg, #697827, #515d1d);
+    color: #ffffff;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 15px;
+    box-shadow: 0 4px 12px rgba(105, 120, 39, 0.2);
 }
 
 button:hover {
-    background-color: #a3b35d;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(105, 120, 39, 0.3);
+}
+
+.instruction-box p {
+    margin: 0 0 8px 0;
+}
+
+.instruction-box ol, .instruction-box ul {
+    margin: 4px 0 8px 0;
+    padding-left: 20px;
+}
+
+.instruction-box li {
+    margin-bottom: 4px;
 }
 
 #result {
-    width: 90%;
-    padding: 20px;
+    width: auto;
+    padding: 12px;
     border: 1px solid #d1e189;
-    border-radius: 10px;
-    background-color: #fff;
-    margin-top: 20px;
+    border-radius: 6px;
+    background-color: #fcfdf7;
+    margin-top: 12px;
+}
+
+#result p {
+    margin: 4px 0;
+    padding: 4px 8px;
+    background: #ffffff;
+    border-left: 3px solid #697827;
+    border-radius: 0 4px 4px 0;
 }
