@@ -7,10 +7,8 @@
     <link rel="stylesheet" href="newtonslawofcoolingcss.css">
 </head>
 <body>
-    <center><h1>Newton's Cooling Law Calculator</h1></center>
-    <div class="container">
+<div class="container">
         <form id="calculator-form">
-
             <h2>READING 1</h2>
             <div class="input-row">
                 <label for="temperature1">Temperature 1:</label>
@@ -20,14 +18,11 @@
                     <option value="F">°F</option>
                     <option value="K">K</option>
                 </select>
+                <label for="time1" style="min-width: auto; margin-left: 5px;">Time 1:</label>
+                <input type="number" id="time1" value="0" readonly style="width: 50px; flex: initial;">
             </div>
-
-            <label for="time1">Time 1 (minutes):</label>
-            <input type="number" id="time1" value="0" readonly>
-
-
-            <h2>READING 2</h2>
-            <div class="input-row">
+            <h2>READING 2</h2>            
+		    <div class="input-row">
                 <label for="temperature2">Temperature 2:</label>
                 <input type="number" id="temperature2" placeholder="Enter temperature">
                 <select id="unit2">
@@ -35,12 +30,9 @@
                     <option value="F">°F</option>
                     <option value="K">K</option>
                 </select>
+                <label for="time2">Time 2 (minutes):</label>
+                <input type="number" id="time2" style="width: 50px; flex: initial;">
             </div>
-
-            <label for="time2">Time 2 (minutes):</label>
-            <input type="number" id="time2">
-
-
             <h2>READING 3</h2>
             <div class="input-row">
                 <label for="temperature3">Temperature 3:</label>
@@ -50,81 +42,162 @@
                     <option value="F">°F</option>
                     <option value="K">K</option>
                 </select>
+                <label for="time3">Time 3 (minutes):</label>
+                <input type="number" id="time3" style="width: 50px; flex: initial;">
             </div>
-
-            <label for="time3">Time 3 (minutes):</label>
-            <input type="number" id="time3">
-
-
             <h2>REQUIREMENTS</h2>
-
-            <label for="cooling-rate">Cooling Rate (k):</label>
-            <input type="number" id="cooling-rate">
-
             <div class="input-row">
-                <label>Surrounding Temperature (°C):</label>
+                <label>Surrounding Temperature (T<sub>S</sub>):</label>
                 <input type="number" id="surroundingTemp">
-
                 <select id="surroundingUnit">
                     <option value="C" selected>°C</option>
                     <option value="F">°F</option>
                     <option value="K">K</option>
                 </select>
             </div>
-
             <div class="input-row">
-                <label>Original Body Temperature (°C):</label>
+                <label>Original Body Temperature (T<sub>0</sub>):</label>
                 <input type="number" id="bodyTemp">
-
                 <select id="bodyUnit">
                     <option value="C" selected>°C</option>
                     <option value="F">°F</option>
                     <option value="K">K</option>
                 </select>
             </div>
-
-            <button id="calculate-button">Calculate</button>
+            <div class="input-row">
+                <label for="cooling-rate">Cooling Rate (k):</label>
+                <input type="number" id="cooling-rate" style="width: 1000px; flex: initial;">
+                <button id="calculate-button">Calculate</button>
+            </div>
+            <div id="result"></div>
         </form>
-
         <div class="instruction-box">
+            <center><h1>Newton's Cooling Law</h1></center>
             <h2>About</h2>
-            <p>Newton's Cooling Law (or) Newton's Law of Cooling is a relation between Time and Temperature</p>
-            <p> It is used to determine the following things: <br><br>
-            i) When does a body started to cool or heat <br>
-            ii) When will the body cool or heat to a particular temperature <br>
-            iii) In a particular scenario, whether the body will heat or cool  <br>
-            iv) What is the time at a particular temperature  <br>
-            v) Other relevant questions related to temperature and time</p>
-
+            <p>
+                <ul><li type="circle">Newton's Cooling Law (or) Newton's Law of Cooling is a relation between Time and Temperature used to determine...</li></ul> <br>
+                i) When does a body started to cool or heat <br>
+                ii) When will the body cool or heat to a particular temperature <br>
+                iii) In a particular scenario, whether the body will heat or cool  <br>
+                iv) What is the time at a particular temperature  <br>
+                v) Other relevant questions related to temperature and time
+            </p>
             <h2>Important Instructions for Newton's Cooling Law Calculator</h2>
-            <p>First, convert the given word problem in Newton's Law of Cooling into a suitable data format and then provide the input for the web app to get accurate results.</p>
-            <p>To ensure accurate results, please follow these instructions:</p>
+            <ul><li type="circle">First, convert the given word problem in Newton's Law of Cooling into a suitable data format and then provide the input for the web app to get accurate results.</li></ul>
+            <ul><li type="circle">To ensure accurate results, please follow these instructions:</li></ul>
             <ol>
-                <li><b>Input Values:</b> You can input any combination of values, and the calculator will solve for the missing values.</li>
-                <li><b>Temperature Relationship:</b> If Temperature 1 and Temperature 2 are both provided, they should both be either above or below the surrounding temperature.</li>
-                <li><b>Cooling or Heating:</b>
+                <li>Input Values: You can input any combination of values, and the calculator will solve for the missing values.</li>
+                <li>Temperature Relationship: If Temperature 1 and Temperature 2 are both provided, they should both be either above or below the surrounding temperature.</li>
+                <li>Cooling or Heating:
                     <ul>
                         <li>If Temperature 1 is greater than Temperature 2, then it means the body is cooling.</li>
                         <li>If Temperature 1 is less than Temperature 2, then it means the body is heating up.</li>
                     </ul>
                 </li>
-                <li><b>Time:</b>
+                <li>Time:
                     <ul>
                         <li>Time 1 is the initial time, which is always 0 minutes.</li>
                         <li>Time 2 is the time at which Temperature 2 is measured.</li>
                     </ul>
                 </li>
-                <li><b>Surrounding Temperature:</b> The surrounding temperature is constant.</li>
-                <li><b>Original Body Temperature:</b> The original body temperature should be on the same side of the surrounding temperature as Temperature 1 and Temperature 2.</li>
-                <p><b>Example:</b> If Surrounding Temperature is 25°C, and Temperature 1 and Temperature 2 are both above 25°C, the Original Body Temperature should also be above 25°C.</p>
-                <li><b>Cooling Rate (k):</b> If you don't know the cooling rate, leave it blank and the calculator will calculate it for you.</li>
-                <li><b>Calculate Button:</b> Click the "Calculate" button to solve for the missing values.</li>
-                <li><b>Result:</b> The calculator will display the calculated values, including the cooling rate, time, or temperature, depending on the input values.</li>
+                <li>Surrounding Temperature: The surrounding temperature is constant.</li>
+                <li>Original Body Temperature: The original body temperature should be on the same side of the surrounding temperature as Temperature 1 and Temperature 2.</li>
+                <p>Example: If Surrounding Temperature is 25°C, and Temperature 1 and Temperature 2 are both above 25°C, the Original Body Temperature should also be above 25°C.</p>
+                <li>Cooling Rate (k): If you don't know the cooling rate, leave it blank and the calculator will calculate it for you.</li>
+                <li>Calculate Button: Click the "Calculate" button to solve for the missing values.</li>
+                <li>Result: The calculator will display the calculated values, including the cooling rate, time, or temperature, depending on the input values.</li>
             </ol>
-            <div id="result"></div>
         </div>
     </div>
+<script>
+const form = document.getElementById("calculator-form");
+const resultDiv = document.getElementById("result");
 
-    <script src="newtonslawofcoolingjs.js"></script>
+function randomGarbage(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function toCelsius(temp, unit) {
+    if (unit === "C") return temp;
+    if (unit === "F") return (temp - 32) * 5/9;
+    if (unit === "K") return temp - 273.15;
+}
+
+function fromCelsius(temp, unit) {
+    if (unit === "C") return temp;
+    if (unit === "F") return (temp * 9/5) + 32;
+    if (unit === "K") return temp + 273.15;
+}
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    resultDiv.innerHTML = "";
+
+    let logs = "";
+
+    // FETCH INPUTS
+    let t1 = document.getElementById("temperature1").value;
+    let t2 = document.getElementById("temperature2").value;
+    let time2 = document.getElementById("time2").value;
+    let k = document.getElementById("cooling-rate").value;
+    let T0 = document.getElementById("bodyTemp").value;
+    const u1 = document.getElementById("unit1").value;
+    const u2 = document.getElementById("unit2").value;
+    const Ts = parseFloat(document.getElementById("surroundingTemp").value);
+
+    // APPLY GARBAGE VALUES
+    if (t1 === "") {
+        const g = randomGarbage(1000, 9000);
+        t1 = g;
+        document.getElementById("temperature1").value = g;
+        logs += `<p>Temperature 1 missing → garbage value assigned: ${g}°${u1}</p>`;
+    }
+
+    if (t2 === "") {
+        const g = randomGarbage(1000, 9000);
+        t2 = g;
+        document.getElementById("temperature2").value = g;
+        logs += `<p>Temperature 2 missing → garbage value assigned: ${g}°${u2}</p>`;
+    }
+
+    if (time2 === "") {
+        const g = randomGarbage(1, 50);
+        time2 = g;
+        document.getElementById("time2").value = g;
+        logs += `<p>Time 2 missing → garbage value assigned: ${g} minutes</p>`;
+    }
+
+    if (k === "") {
+        const g = Math.random().toFixed(3);
+        k = g;
+        document.getElementById("cooling-rate").value = g;
+        logs += `<p>Cooling Rate missing → garbage value assigned: ${g}</p>`;
+    }
+
+    if (T0 === "") {
+        const g = randomGarbage(1000, 9000);
+        T0 = g;
+        document.getElementById("bodyTemp").value = g;
+        logs += `<p>Original Temperature missing → garbage value assigned: ${g}°C</p>`;
+    }
+
+    // CONVERT
+    const T1c = toCelsius(parseFloat(t1), u1);
+    const T2c = toCelsius(parseFloat(t2), u2);
+    const kVal = parseFloat(k);
+    const tVal = parseFloat(time2);
+
+    // NEWTON'S COOLING LAW CALCULATIONS
+    const tempCalc = Ts + (T1c - Ts) * Math.exp(-kVal * tVal);
+    const timeCalc = Math.log((T1c - Ts) / (T2c - Ts)) / kVal;
+    const T2final = fromCelsius(tempCalc, u2);
+
+    logs += `<p>Calculated Temperature at time ${tVal} minutes: ${T2final.toFixed(3)}°${u2}</p>`;
+    logs += `<p>Calculated Time between T1 & T2: ${timeCalc.toFixed(3)} minutes</p>`;
+    logs += `<p>Cooling Rate (k): ${kVal}</p>`;
+
+    resultDiv.innerHTML = logs;
+});
+</script>
 </body>
 </html>
