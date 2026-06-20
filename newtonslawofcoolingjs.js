@@ -28,10 +28,10 @@ form.addEventListener("submit", (e) => {
     let t2 = document.getElementById("temperature2").value;
     let time2 = document.getElementById("time2").value;
     let k = document.getElementById("cooling-rate").value;
-    let T0 = document.getElementById("original-temperature").value;
+    let T0 = document.getElementById("bodyTemp").value;
     const u1 = document.getElementById("unit1").value;
     const u2 = document.getElementById("unit2").value;
-    const Ts = parseFloat(document.getElementById("surrounding-temperature").value);
+    const Ts = parseFloat(document.getElementById("surroundingTemp").value);
 
     // APPLY GARBAGE VALUES
     if (t1 === "") {
@@ -65,7 +65,7 @@ form.addEventListener("submit", (e) => {
     if (T0 === "") {
         const g = randomGarbage(1000, 9000);
         T0 = g;
-        document.getElementById("original-temperature").value = g;
+        document.getElementById("bodyTemp").value = g;
         logs += `<p>Original Temperature missing → garbage value assigned: ${g}°C</p>`;
     }
 
